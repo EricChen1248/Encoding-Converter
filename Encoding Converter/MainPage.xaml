@@ -2,7 +2,6 @@
     x:Class="Encoding_Converter.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Encoding_Converter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -10,5 +9,32 @@
 
     <Grid>
 
+        <!--Input Controls-->
+        <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="40,48,0,0" Text="File:" FontFamily="monofur" FontWeight="Black" Foreground="Beige"/>
+        <Border BorderBrush="#FF979191" HorizontalAlignment="Stretch" Margin="120,40,140,0" VerticalAlignment="Top" Height="32" BorderThickness="1">
+            <TextBlock x:Name="FileLocationText" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,0,0" Text="Input File..." FontFamily="monofur" FontWeight="Black" Foreground="Beige"/>
+        </Border>
+        <Button Content="Select File" HorizontalAlignment="Right" Margin="0,40,40,0" VerticalAlignment="Top" BorderBrush="#666666" BorderThickness="2" Click="InputSelectButton_Click"/>
+        <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="40,90,0,0" Text="Encoding:" FontFamily="monofur" FontWeight="Black" Foreground="Beige"/>
+        <ComboBox x:Name="InputEncodingCombo" HorizontalAlignment="Stretch" Margin="120,84,40,0" VerticalAlignment="Top" ItemsSource="{x:Bind _encodings}" DisplayMemberPath="Key" IsTextSearchEnabled="True" SelectionChanged="InputEncodingCombo_OnSelectionChanged"/>
+        
+        
+        <!--Preview Blocks-->
+        <Border HorizontalAlignment="Stretch" Margin="40,129,40,160" VerticalAlignment="Stretch"  BorderThickness="2" BorderBrush="#666666">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="10,10,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalScrollBarVisibility="Auto">
+                <TextBlock x:Name="PreviewTextBlock" Text="Preview Text" FontFamily="monofur" FontWeight="Black"/>
+            </ScrollViewer>
+        </Border>
+
+
+        <!--Output Controls-->
+        <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="40,68,0,117" Text="Output:" FontFamily="monofur" FontWeight="Black" Foreground="Beige"/>
+        <Border BorderBrush="#FF979191" HorizontalAlignment="Stretch" Margin="120,60,140,110" VerticalAlignment="Bottom" Height="32" BorderThickness="1">
+            <TextBlock x:Name="OutputLocationText" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,0,0" Text="File" FontFamily="monofur" FontWeight="Black" Foreground="Beige"/>
+        </Border>
+        <Button x:Name="SelectOutputButton"  Content="Select File" HorizontalAlignment="Right" Margin="0,60,40,110" VerticalAlignment="Bottom" BorderBrush="#666666" BorderThickness="2" Click="OutputSelectButton_Click"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="40,110,0,66" Text="Output Encoding:" Width="70" FontFamily="monofur" FontWeight="Black" Foreground="Beige" TextWrapping="WrapWholeWords"/>
+        <ComboBox x:Name="OutputEncodingCombo"  HorizontalAlignment="Stretch" Margin="120,104,40,63" VerticalAlignment="Bottom" ItemsSource="{x:Bind _encodings}" DisplayMemberPath="Key" IsTextSearchEnabled="True"/>
+        <Button x:Name="SaveButton"  Content="Save" HorizontalAlignment="Stretch" Margin="40,60,40,18" VerticalAlignment="Bottom" BorderBrush="#666666" BorderThickness="2" Click="SaveButton_OnClick"/>
     </Grid>
 </Page>
